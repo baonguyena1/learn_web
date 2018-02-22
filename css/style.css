@@ -1,0 +1,10 @@
+p { 
+    color: red; 
+}
+blockquote { 
+    background: lightgreen; 
+    color: darkgreen;
+}
+.date {
+    color: yellow;
+}
