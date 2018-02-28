@@ -6,5 +6,29 @@ blockquote {
     color: darkgreen;
 }
 .date {
-    color: yellow;
+    color: green;
+    font-weight: 700;
 }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.menu a {
+    color: brown;
+}
+.menu li { 
+    display: inline;
+}
+a { color: blue; }
+a:hover { color: red; }
+a:visited { color: rebeccapurple; }
+.form-input {
+    border: 2px solid grey; 
+    padding: 5px;
+}
+.form-input:focus {
+    background: lightyellow; 
+    border-color: blue;
+    outline: none;
+}
+li:first-child { background: greenyellow; }
+li:last-child { background: lightsalmon; }

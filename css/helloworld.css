@@ -1,0 +1,14 @@
+body {
+    font-family: sans-serif;
+    background: url('http://wallpapercave.com/wp/sW4JXl5.jpg');
+    background-size: cover;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#header {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
