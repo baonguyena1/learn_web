@@ -8,7 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
-    <body style="margin-top:60px !important; margin-bottom:60px !important;">
+    <body style="margin-top:60px !important; margin-bottom:60px !important;" data-spy="scroll" data-target=".navbar" data-offset="20">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -21,10 +21,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Page 1</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#section1">Page 1</a></li>
+                        <li><a href="#section2">Page 2</a></li>
+                        <li><a href="#section3">Page 3</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div id="home" class="container">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -103,40 +103,126 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
-                            <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
-                            <div class="caption">
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </a>
+        <div style="height:40px"></div>
+
+        <div id="section1" class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
-                            <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
-                            <div class="caption">
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
-                            <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
-                            <div class="caption">
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+    
             </div>
+        </div>
 
+        <div style="height:40px"></div>
+
+        <div id="section2" class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+
+        <div style="height:40px"></div>
+
+        <div id="section3" class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="https://www.w3schools.com/w3images/lights.jpg" target="_blank">
+                                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="light" style="width:100%;">
+                                <div class="caption">
+                                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
         </div>
         
         <!-- Bottom nav -->

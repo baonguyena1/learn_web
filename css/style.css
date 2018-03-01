@@ -2,3 +2,7 @@ body {
     margin-top: 60px !important;
     margin-bottom: 60px !important;
 }
+#section1 {
+    height: 500px !important;
+    background-color: #1E88E5 !important;
+}
