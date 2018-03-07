@@ -1,0 +1,9 @@
+<h3 [hidden]='forgot'>{{en}}</h3>
+<p>{{vn}}</p>
+<!-- <img src="{{imageUrl}}"> -->
+<img [src]='imageUrl'>
+<button (click)='toggleForgot()' >Toggle forgot</button>
+<div>
+        <input type="text" placeholder="Input here" (keyup)="showEvent($event)"><br>
+        <label>Your name is: {{name}}</label>
+</div>

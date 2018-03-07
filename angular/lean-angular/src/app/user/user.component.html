@@ -1,0 +1,8 @@
+<div>
+  <!-- <input type="text" placeholder="Input here" (keyup)="showEvent($event)"> -->
+  <input type="text" placeholder="Input here" [(ngModel)]="name" #txtUsername>
+  <h3>Your name is: {{ name }}</h3>
+  <code>{{ txtUsername.value | json }}</code>
+  <h3 [style.color]="color()">Your name is: {{name}}</h3>
+</div>
+<div [class]="type()"></div>
