@@ -1,0 +1,311 @@
+<div class="row userController">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 user-menu-item">
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <h4>DANH SÁCH NGƯỜI DÙNG</h4>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Tạo tài khoản</button> -->
+        <a href="" class="create-org-button" data-toggle="modal" data-target="#createNewUser">Tạo tài khoản   <span><i class="glyphicon glyphicon-plus"></i></span></a>
+      </div>
+    </div>
+  </div>
+  <!-- add alret message -->
+  <div id="info-delete-message" ng-show="alertsMsg" uib-alert ng-class="'alert-' + (alertsMsg.type || 'warning')" dismiss-on-timeout="5000" close="closeAlert($index)">{{alertsMsg.message}}</div>
+  <!-- end add alret message -->
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 user-list-content">
+    <div ng-if="users.length > 0" class="row nopadding user-list-scroll aligned-row" infinite-scroll-distance='1' infinite-scroll='loadMoreUserData()' infinite-scroll-disabled='busy' infinite-scroll-container="'.user-list-scroll'">
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 user-item row-eq-height" ng-repeat="user in users" id="equalheight">
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
+            <div>
+              <img class="user-item-image" check-avatar-image ng-src="{{user.avatar}}" class="user-avatar">
+            </div>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <div class="row user-item-info">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                <a ng-click="viewUserDetail(user)" href="" data-toggle="modal" data-target="#myModal"><strong>{{user.last_name ||  user.middle_name || user.first_name? user.last_name  + ' ' +  user.middle_name  + ' ' +  user.first_name : user.email}}</strong></a>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                {{user.position.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-show='busy'>Loading data...</div>
+    </div>
+  </div>
+</div>
+<!-- start test create popup -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div>
+      <div class="modal-header" style="background: white; border: none !important; ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <form class="form-horizontal popup-form" role="form">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="    background: white;">
+          <div class="row row-eq-height">
+            <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3 ">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <img src="{{userData.avatar}}" alt="" style="width: 100%;border-radius: 100%;">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 remove-user-bt">
+                  <button data-toggle="modal" data-target="#confirmDeleteUser" type="button" name="button" data-dismiss="modal"> Xóa người dùng</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+              <div class="row">
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Họ và tên</label>
+                  <div class="col-sm-8">
+                    <input userinfo placeholder="Ví dụ: Nguyễn Quang Hải" value="" ng-model="userData.full_name">
+                  </div>
+                </div>
+                <!-- <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Tên đệm</label>
+                  <div class="col-sm-9">
+                    <input userinfo ng-model="userData.middle_name" type='text'>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Tên</label>
+                  <div class="col-sm-9">
+                    <input userinfo placeholder="Ví dụ: Hải" value="" ng-model="userData.first_name">
+                  </div>
+                </div> -->
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Phòng ban</label>
+                  <div class="col-sm-8">
+                    <select ng-model="userData.department" ng-options="department as department.name for department in departments track by department._id" style="width: 90%"></select>
+                    <!-- <select style="width: 90%" class="js-example-basic-multiple">
+                                          <option ng-repeat="department in departments"  value="{{department._id}}">{{department.name}}</option>
+                                        </select> -->
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Chức vụ</label>
+                  <div class="col-sm-8">
+                    <!-- <select style="width: 90%" class="js-example-basic-multiple"  ng-model="userData.position">
+                    <option ng-repeat="position in positions"  value="{{position._id}}"  ng-selected="{{userData.position._id == position._id}}">{{position.name}}</option>
+                    </select> -->
+                    <select ng-model="userData.position" ng-options="position as position.name for position in positions track by position._id" style="width: 90%"></select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input userinfo disabled="true" hidden ng-model="userData._id" type='text'>
+                  <label for="email" class="col-sm-4 control-label">Tên đăng nhập</label>
+                  <div class="col-sm-8">
+                    <input userinfo disabled="true" ng-model="userData.username" type='text'>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input userinfo disabled="true" hidden ng-model="userData._id" type='text'>
+                  <label for="email" class="col-sm-4 control-label">Email</label>
+                  <div class="col-sm-8">
+                    <input userinfo disabled="true" ng-model="userData.email" type='text'>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Giới tính</label>
+                  <div class="col-sm-8">
+                    <select ng-model="userData.gender" ng-selected="userData.gender" ng-options="gender as gender.name for gender in userGender track by gender.value" style="width: 90%"></select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Địa chỉ</label>
+                  <div class="col-sm-8">
+                    <input type="text" userinfo ng-model="userData.address">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Điện thoại</label>
+                  <div class="col-sm-8">
+                    <input type="text" userinfo ng-model="userData.phone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Ngày sinh</label>
+                  <div class="col-sm-8">
+                    <input type="date" name="input" ng-model="userData.dob" max="2038-01-19" />
+                  </div>
+                </div>
+                <div ng-show="message" class="alert alert-info" style="text-align: center;">
+                  <strong>{{message}}</strong>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-10 col-sm-offset-2" style="text-align: center;">
+                    <button id="cancel-update-user-button" type="submit" class="btn btn-primary submit-button" data-dismiss="modal" ng-click="resetUserInfoUpdate()">Hủy</button>
+                    <button id="save-user-button" type="submit" class="btn btn-primary submit-button" ng-click="updateUser(userData)">Lưu</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div id="createNewUser" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div>
+      <div class="modal-header" style="background: white; border: none !important; ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <form class="form-horizontal popup-form" role="form">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="    background: white;">
+          <div class="row row-eq-height">
+            <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3 ">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <label>
+                    <img id="blah" src="./assets/img/icons/add-avata-icon.png" alt="" style="width: 80px;border-radius: 100%; height: 80px;" >
+                    <input  style="display: none;" type="file" accept="image/*" id="imgInp"  file-model = "userAvatar">
+                  </label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 remove-user-bt">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+              <div class="row">
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Họ và tên</label>
+                  <div class="col-sm-9">
+                    <input value="" ng-model="newUser.full_name" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Phòng ban</label>
+                  <div class="col-sm-9">
+                    <select ng-model="newUser.department" ng-options="department as department.name for department in departments track by department._id" style="width: 90%"></select>
+                    <!-- <select style="width: 90%" class="js-example-basic-multiple">
+                                          <option ng-repeat="department in departments"  value="{{department._id}}">{{department.name}}</option>
+                                        </select> -->
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Chức vụ</label>
+                  <div class="col-sm-9">
+                    <!-- <select style="width: 90%" class="js-example-basic-multiple"  ng-model="userData.position">
+                    <option ng-repeat="position in positions"  value="{{position._id}}"  ng-selected="{{userData.position._id == position._id}}">{{position.name}}</option>
+                    </select> -->
+                    <select ng-model="newUser.position" ng-options="position as position.name for position in positions track by position._id" style="width: 90%"></select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email" class="col-sm-3 control-label">Email</label>
+                  <div class="col-sm-9">
+                    <input ng-model="newUser.email" type='email' class="form-control" required onchange="this.setCustomValidity(validity.valueMissing ? 'Vui lòng nhập tên cơ quan, tổ chức' : '');" id="useremail">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Giới tính</label>
+                  <div class="col-sm-9">
+                    <select ng-model="newUser.gender" ng-options="gender as gender.name for gender in userGender track by gender.value" style="width: 90%"></select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Địa chỉ</label>
+                  <div class="col-sm-9">
+                    <input type="text" ng-model="newUser.address" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Điện thoại</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="newUser.phone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Ngày sinh</label>
+                  <div class="col-sm-9">
+                    <input type="date" name="input" ng-model="newUser.dob" max="2038-01-19" class="form-control" />
+                  </div>
+                </div>
+                <div ng-show="message" class="alert alert-info" style="text-align: center;">
+                  <strong>{{message}}</strong>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-10 col-sm-offset-2" style="text-align: center;">
+                    <button id="cancel-update-user-button" type="submit" class="btn btn-primary submit-button" data-dismiss="modal" ng-click="resetUserNewUser()">Hủy</button>
+                    <button id="save-user-button" type="submit" class="btn btn-primary submit-button" ng-click="createUser(newUser)">Lưu</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="confirmDeleteUser" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div>
+      <div class="modal-header" style="background: white; border: none !important; ">
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p style="color: green;"><strong>Bạn có chắc muốn xóa người dùng này không?</strong></p>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background: white;">
+          <div class="row">
+            <div ng-show="message" class="alert alert-info" style="text-align: center;">
+              <strong>{{message}}</strong>
+            </div>
+            <div class="form-group button-update-group">
+              <div class="col-sm-10 col-sm-offset-2" style="text-align: center;">
+                <button style="width: 80px" type="submit" class="btn btn-primary submit-button" data-dismiss="modal" ng-click='removeUser(userData)'>Xóa</button>
+                <button type="submit" class="btn btn-primary submit-button" data-toggle="modal" data-target="#myModal" data-dismiss="modal">Hủy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#imgInp").change(function() {
+    readURL(this);
+  });
+  // $('#viewAndUpdateOrg').modal({
+  //   show: false,
+  //   backdrop: 'static'
+  // })
+  document.getElementById("useremail").setCustomValidity("Vui lòng nhập hòm thư điện tử");
+  // document.getElementById("orgaddress").setCustomValidity("Vui lòng nhập địa chỉ cơ quan, tổ chức");
+</script>

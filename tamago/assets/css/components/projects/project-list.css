@@ -1,0 +1,36 @@
+.project-name{
+	color: #0079fb;
+	transform: uppercase;
+}
+.create-project{
+	font-weight: bold;
+	padding-top: 4px;
+	height: 30px;
+	width: 130px;
+	margin-top: 15px;
+	border: 1px solid;
+	border-style: dashed;
+	border-radius: 20px;
+}
+
+.project-info-detail .project-info-detail-num {
+	color:#4A4A4A;
+	font-weight: bold;
+}
+.project-info-detail .project-info-detail-label {
+	color: #9B9B9B;
+}
+.create-project-btn {
+	float: right;
+	margin-left: 25px;
+	margin-right: 10px;
+}
+.no-data-text {
+	text-align: center;
+	padding-top: 20px;
+	padding-right: 25px;
+}
+.wrap-no-data {
+	text-align: center;
+	 padding-top: 50px;
+}

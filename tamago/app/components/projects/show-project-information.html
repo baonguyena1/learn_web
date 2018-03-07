@@ -1,0 +1,292 @@
+<div class="project-information-container">
+  <div class="row top-menu">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 right-element">
+          <img check-avatar-image class="img-manager-project" ng-src="{{projectInfomation.owner.avatar}}">
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
+          <h5 class="name-project-manager">
+                        {{name_owners}}
+                    </h5>
+          <h6>
+                        {{position_name | limitTo: positionNameLength}}
+                        {{position_name.length > positionNameLength ? '...':'' }}
+                    </h6>
+        </div>
+      </div>
+    </div>
+    <div class="proj-info-element-container">
+      <div class="proj-info-complete right-element">
+        <div class="row">
+          <div class="number-complete">
+            {{projectInfomation.percentComplete}}%
+            <span>Hoàn thành</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info-task-delay right-element">
+        <div class="row">
+          <div class="number-task-delay">
+            {{projectInfomation.late_task_count}}
+            <span>Task trễ</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info-num-worker right-element">
+        <div class="row">
+          <div class="number-people">
+            {{projectInfomation.total_member}}
+            <span>Người làm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-info-create-task">
+      <div class="row create-project" ng-if="canCreateMainTask == 1">
+        <a href="#/dashboard/task-create/{{projectInfomation._id}}">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <img ng-src="./assets/img/icons/icn-create-new-project.png"> Tạo Tác Vụ
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- add alret message -->
+  <div ng-show="alertsMsg" uib-alert ng-class="'alert-' + (alertsMsg.type || 'warning')" dismiss-on-timeout="5000" close="closeAlert($index)">{{alertsMsg.message}}</div>
+  <!-- end add alret message -->
+  <div class="panel panel-default">
+    <div class="panel-heading project-panel-heading">
+
+      <div class="row">
+        <div class="col-xs-2 col-sm-2 col-lg-1 wrap-img-project">
+          <img ng-if="projectInfomation.thumbnail" class="project-img" ng-src="{{projectInfomation.thumbnail}}">
+          <img ng-if="!projectInfomation.thumbnail" class="project-img" ng-src="./assets/img/icons/project_img_icon.png">
+        </div>
+        <div class="col-xs-8 col-sm-8 col-lg-10 wrap-project">
+          <div class="row">
+            <h5 class="project-detail-name">{{projectInfomation.name}}</h5>
+            <h6>{{projectInfomation.plan_start_date | formatDate}}
+                        {{projectInfomation.plan_start_date && projectInfomation.plan_end_date? '-' :''}}
+                        {{projectInfomation.plan_end_date | formatDate }}</h6>
+          </div>
+        </div>
+        <div ng-if="projectInfomation.can_change" class="col-xs-2 col-sm-2 col-lg-1 icon-edit-project">
+          <div class="row ">
+            <div class="new-icon-edit-project" ng-show="projectInfomation.can_change">
+              <a data-toggle="dropdown"><span><i class="glyphicon glyphicon-option-vertical"></i></span>
+              </a>
+              <ul id="dropdown" class="dropdown-menu dropdown-menu-right">
+                <li ng-if="projectInfomation.can_change">
+                  <a ui-sref="dashboard.edit-project({idProject: projectId})"> <i class="glyphicon glyphicon-pencil"></i> Chỉnh sửa
+                  </a>
+                </li>
+                <li ng-if="projectInfomation.can_cancel">
+                  <a href="" ng-click="openConfirmBoxCancelProject(projectInfomation._id)"><i class="glyphicon glyphicon-trash"></i>  Hủy</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row children-tasks">
+        <!-- <div class="col-lg-1"></div> -->
+        <div ng-repeat="tab in projectTabs" class="col-xs-4 col-sm-4 cursor-pointer" ng-click="onClickTab(tab)">
+          <div class="row ">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+              <img ng-src="{{currentIcon(tab)}}">
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 project-detail-label">
+              <h5 ng-class="{activeProject: isActiveTab(tab.url)}">
+                                {{tab.title}}
+                            </h5>
+            </div>
+          </div>
+          <div ng-class="{lineActive: isActiveTab(tab.url)}"></div>
+        </div>
+        <!-- <div class="col-lg-1"></div> -->
+      </div>
+    </div>
+
+    <div class="panel-body body-project-task">
+      <div ng-include="currentTab"></div>
+    </div>
+    <div class="row" ng-show="currentTab == 'tacvu'">
+      <div class="col-xs-12 col-sm-12 dynamic-paging">
+        <!-- <ul ng-show="tasksProject.length > 0" class="pull-right" uib-pagination total-items="totalItems" max-size="5"
+                    items-per-page="perPage" ng-model="currentPage" ng-change="pageChanged()" previous-text="Trang trước" next-text="Trang sau">
+               </ul> -->
+        <ul ng-show="tasksProject.length > 0" class="pull-right" uib-pagination total-items="totalItems" items-per-page="perPage" ng-model="currentPage" max-size="5" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="pageChanged()" first-text="Trang đầu"
+          last-text="Trang cuối" next-text="Trang sau" previous-text="Trang trước">
+          </ul>
+      </div>
+    </div>
+    <script type="text/ng-template" id="tacvu">
+      <div class="row">
+        <div ng-repeat="task in tasksProject" class="col-xs-12 col-sm-12 col-md-6 cl-lg-4">
+          <task-infor task='task'></task-infor>
+        </div>
+      </div>
+      <div ng-show="tasksProject.length == 0" class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 wrap-no-data">
+          <img ng-src="./assets/img/icons/No_data_icon.png">
+          <p class="no-data-text"> Chưa có dữ liệu</p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        </div>
+      </div>
+    </script>
+    <script type="text/ng-template" id="bieudo">
+      <h1> Biểu đồ</h1>
+    </script>
+    <script type="text/ng-template" id="thongtin">
+      <div class="row project-info">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 test1">
+          <img ng-src="./assets/img/icons/icn-location-of-project.png">
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+          {{projectInfomation.location}}
+          <input ng-if="!projectInfomation.location" disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+      <div class="row project-info">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/icn-companies-of-project.png">
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+          {{projectInfomation.investor_unit}}
+          <input ng-if="!projectInfomation.investor_unit" disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+      <div class="row project-info">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/icn-hectares-of-project.png">
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="projectInfomation.scale.total">{{projectInfomation.scale.total}} {{projectInfomation.scale.unit}}</div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="!projectInfomation.scale.total">
+          <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+      <div class="row project-info">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/dollar.png">
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="projectInfomation.total_investment.total">{{projectInfomation.total_investment.total}} {{projectInfomation.total_investment.unit}}</div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="!projectInfomation.total_investment.total">
+          <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+      <div class="row project-info">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/icn-group-of-project.png">
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="projectInfomation.manager_unit">{{projectInfomation.manager_unit}}</div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="!projectInfomation.manager_unit">
+          <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+
+      <div class="row project-info">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/assignee-icon.png">
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="projectInfomation.total_member">
+          <span style="padding-right: 6px">Thành viên</span>
+          <span class="badge badge-notify">{{projectInfomation.total_member}}</span>
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="!projectInfomation.total_member">
+          <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+      <!--  <div class="row project-info">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                     <img ng-src="./assets/img/icons/monitoring_icon.png">
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="projectInfomation.total_viewer">
+                    <span style="padding-right: 6px">Người theo dõi</span>
+                    <span class="badge badge-notify">{{projectInfomation.total_viewer}}</span>
+                </div>
+                  <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="!projectInfomation.total_viewer">
+                    <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+                </div>
+            </div> -->
+      <div class="row project-info">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/icn-start-date.png">
+        </div>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" ng-if="projectInfomation.plan_start_date">{{projectInfomation.plan_start_date | formatDate}}</div>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" ng-if="!projectInfomation.plan_start_date">
+          <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/icn-end-date.png">
+        </div>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" ng-if="projectInfomation.plan_end_date">{{projectInfomation.plan_end_date | formatDate}}</div>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" ng-if="!projectInfomation.plan_end_date">
+          <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+      <div class="row project-info description-project">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <img ng-src="./assets/img/icons/icn-content.png">
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="projectInfomation.description">
+          {{projectInfomation.description}}
+        </div>
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" ng-if="!projectInfomation.description">
+          <input disabled class="text-no-data" type="text" placeholder="Chưa nhập dữ liệu">
+        </div>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="vanban">
+      <div ng-include="'app/components/projects/document-list.html'"></div>
+      <div class="row pull-right btn-add-document" style="margin-right: 15px;">
+        <button ng-click="open()" class="btn btn-add-document">
+                        <i class="glyphicon glyphicon-plus"></i>
+                </button>
+      </div>
+
+    </script>
+    <script type="text/ng-template" id="thanhvien">
+      <h1> Thành viên</h1>
+    </script>
+  </div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+  <form name="addDocumentForm" class="add-document-popup-container">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title"><strong>VĂN BẢN</strong></h4>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <div class="form-group">
+        <input type="text" ng-model="$ctrl.document_number" required="" class="form-control" placeholder="Số liệu văn bản" name="">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="$ctrl.issuer" required="" class="form-control" placeholder="Cơ quan hành chính" name="">
+      </div>
+      <div class="form-group">
+        <textarea ng-model="$ctrl.description" required="" class="form-control no-margin" placeholder="Mô tả"></textarea>
+      </div>
+      <div class="form-group">
+        <label>
+                        <input type="radio" checked="true" value="1" ng-model="$ctrl.type" name="type">
+                        Công văn đến
+                    </label>
+      </div>
+      <div class="form-group">
+        <label>
+                        <input type="radio" value="0" ng-model="$ctrl.type" name="type">
+                        Công văn đi
+                    </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger btn-doc-cancel" type="button" ng-click="$ctrl.cancel()">Hủy</button>
+      <button class="btn btn-primary btn-doc-save" ng-disabled="!addDocumentForm.$valid || $ctrl.submiting" type="button" ng-click="$ctrl.ok()">Lưu</button>
+    </div>
+  </form>
+</script>

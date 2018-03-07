@@ -1,0 +1,47 @@
+ <div class="modal-header">
+    <div class="col-xs-4">
+      <h5 class="modal-title create-task-title" id="modal-title">{{$ctrl.modalTitle}}</h5>
+    </div>
+</div>
+<div class="modal-body modal-select-user" id="modal-body">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list-task-template">
+  <div ng-repeat="task in $ctrl.taskTemplates">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wrap-infor-assigner "
+           ng-class="$ctrl.showUser(member) === false ? 'disabled-user' : ''"
+           >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 user-assign">
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+             <i ng-click="task.isCollapsed = !task.isCollapsed" class="fa fa-minus-square circle-task-template"
+              aria-hidden="true" ></i>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+              <h5><strong>{{task.title}}</strong></h5>
+          </div>
+           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 select-circle"
+                 ng-click="!$ctrl.showUser(task) || $ctrl.selectTask(task, task.children, 'parent')">
+              <div ng-if="task.is_selected"
+                   class="circle-prior-normal circle-task-template"></div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 children-task"
+             ng-repeat="childrenTask in task.children" uib-collapse="task.isCollapsed"
+             ng-click="!$ctrl.showUser(childrenTask) || $ctrl.selectTask(task, childrenTask, 'children')">
+           <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" >
+                <h5><strong>{{childrenTask.title}}</strong></h5>
+            </div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div ng-if="childrenTask.is_selected"
+                     class="circle-prior-normal circle-task-template"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="col-xs-12 ">
+</div>
+
+</div>
+<div class="modal-footer modal-select-asignee add-document-popup-container select-main-task">
+    <button  class="btn btn-danger btn-cancel ng-scope" ng-click="$ctrl.cancel()">Hủy</button>
+    <button class="btn btn-primary btn-doc-save" type="button" ng-click="$ctrl.ok()"> Xong </button>
+</div>

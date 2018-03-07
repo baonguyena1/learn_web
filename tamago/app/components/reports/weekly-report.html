@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-xs-12 report-header">
+    BÁO CÁO
+  </div>
+  <div class="col-xs-12">
+    <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" dismiss-on-timeout="5000" close="closeAlert($index)">{{alert.message}}</div>
+    <div class="report-project row">
+      <div class="report-project-image col-xs-1">
+        <img height="25" ng-src="./assets/img/icons/report-project.png" width="25"></img>
+      </div>
+      <div class="report-project-title col-xs-11">
+        {{taskInfo.project}}
+      </div>
+    </div>
+    <div class="report-task col-xs-12">
+      <div class="col-xs-12 report-task-title">
+        <p>{{taskInfo.title}}</p>
+      </div>
+
+    </div>
+    <div class="report-week row">
+      <select-week weekSelected="weekSelected" disabled={{!canSelectWeek}}></select-week>
+    </div>
+    <div class="report-contain row">
+      <div class="col-xs-12 report-session">
+        <div class="report-session-title">
+          <div class="report-item-icon col-xs-1">
+            <img ng-src="./assets/img/icons/report-plan-icon.png"></img>
+          </div>
+          <div class="report-item-title report-item-plan col-xs-11">
+            Kế hoạch tuần {{currentWeek()}}
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <textarea class="report-message" ng-model="reportInfo.message" ng-disabled="actionMode == reportActions.VIEW"></textarea>
+        </div>
+      </div>
+
+      <div class="col-xs-12 report-session">
+        <div class="report-session-title">
+          <div class="report-item-icon col-xs-1">
+            <img ng-src="./assets/img/icons/report-result-icon.png"></img>
+          </div>
+          <div class="report-item-title report-item-result col-xs-11">
+            Kết quả tuần {{currentWeek()}}
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <textarea class="report-message" ng-model="reportInfo.result" ng-disabled="actionMode == reportActions.VIEW"></textarea>
+        </div>
+      </div>
+
+      <div class="col-xs-12 report-session">
+        <div class="report-session-title">
+          <div class="report-item-icon col-xs-1">
+            <img ng-src="./assets/img/icons/report-next-plan-icon.png"></img>
+          </div>
+          <div class="report-item-title report-item-next-plan col-xs-11">
+            Kế hoạch tuần {{nextWeek()}}
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <textarea class="report-message" ng-model="reportInfo.next_plan" ng-disabled="actionMode == reportActions.VIEW"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer col-xs-12" ng-if="actionMode != reportActions.VIEW">
+      <button class="btn btn-danger btn-cancel ng-scope" ng-click="cancelAction()">Hủy</button>
+      <button class="btn btn-primary btn-doc-save" ng-click="doneAction()" type="button">
+        Xong
+      </button>
+    </div>
+
+    <div class="modal-footer col-xs-12" ng-if="actionMode == reportActions.VIEW">
+      <button class="btn btn-danger btn-cancel ng-scope" ng-click="cancelAction()">Đóng</button>
+    </div>
+  </div>
+</div>

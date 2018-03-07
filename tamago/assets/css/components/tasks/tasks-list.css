@@ -1,0 +1,312 @@
+.left-menu {
+	background-color: gray;
+}
+.main-menu {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.option-tasks {
+	min-height: 45px;
+}
+.left-menu-task {
+	list-style-type: none;
+	padding-top: 30px;
+    padding-left: 12px;
+}
+.left-menu-task li {
+	padding-bottom: 20px;
+}
+.left-menu-task  li a {
+	color: white;
+}
+.left-menu-task  li img {
+	color: white;
+	padding-right: 12px;
+}
+.task-container {
+	background-color: gray;
+	margin-left: 0px;
+}
+.task-list-panel {
+    width: 97%;
+    border: 0px;
+    box-shadow: 2px 2px 2px #e2dddd;
+    margin-left: 15px;
+    padding-left: 10px;
+}
+.task-list-panel .task-list-panel-info>div:nth-child(3) {
+    padding-left: 0px;
+}
+.task-list-panel .task-img-manager {
+    padding-left: 0px;
+
+}
+
+.task-list-title {
+
+}
+
+.late-task-title {
+  color: #ff2347;
+}
+
+.completed-task-title {
+  color: #3dd655;
+}
+
+.waiting-task-title {
+  color: #959595;
+}
+
+
+.task-list-basic-info {
+  padding-bottom: 10px;
+}
+
+.project-info-task-list-panel {
+    width: 100%;
+    border: 0px;
+    border-radius: 10px;
+    padding-right: 10px;
+    box-shadow: 2px 2px 2px #e2dddd;
+}
+.task-icon {
+	padding-top: 3px;
+	padding-left: -1px;
+	padding-right: 0px;
+}
+.task-list-panel-info .task-list-info-detail {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.task-list-panel-info .addition-info {
+  padding-right: 0px;
+}
+
+.task-icon img{
+    float: left;
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.task-icon-project {
+	padding-bottom: 3px;
+}
+.project-info {
+	margin-top: 4px;
+}
+.badge-notify {
+    margin-left: 5px;
+	background-color: red;
+}
+.task-inprogress {
+    padding-left: 20px;
+	padding-top: 20px;
+	padding-right: 0px;
+}
+.project-icon {
+    margin-left: 20px;
+	/*width: 10px;*/
+    float: right;
+	margin-top: 20px;
+}
+.project-icon>a:hover,
+.project-icon>a:focus {
+    text-decoration: none;
+}
+.list-icons {
+	padding-right: 20px;
+}
+.wrap-task-list {
+	margin-top: 20px;
+	/*width: 90%;*/
+    height: 100%;
+}
+
+.task-info-name-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+
+/**
+ * Start comment box style
+ */
+
+.nano {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.nano>.nano-content {
+    position: absolute;
+    overflow: auto;
+    overflow-x: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.pad-all {
+    padding-top: 15px;
+    padding-right: 5px;
+}
+.mar-btm {
+    margin-bottom: 15px;
+}
+.media-block .media-left {
+    display: block;
+    float: left;
+}
+.img-sm {
+    width: 30px;
+    height: 30px;
+}
+.media-block .media-body {
+    display: block;
+    overflow: hidden;
+    width: auto;
+}
+.speech {
+    position: relative;
+    background: #dfdfdf;
+    color: white;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.user-message{
+    text-align: left;
+    color:#fff;
+}
+
+.speech-report .user-message {
+  color:#000;
+}
+
+.message-send {
+    color:black;
+}
+
+.speech-report {
+  position: relative;
+  background: #FFD000;
+  color: black;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.speech-report .edit-report-menu {
+  display: none;
+}
+
+.edit-report-menu .edit-report-menu-item {
+  padding: 3px 6px;
+  float: right;
+  cursor: pointer;
+}
+
+.speech-report:hover .edit-report-menu {
+  display: block;
+}
+
+.edit-report-menu-item:hover {
+  color: #308cea;
+}
+
+.speech:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    top: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    margin: 15px 0 0 -6px;
+}
+.speech-right>.speech:before {
+    left: auto;
+    right: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 0;
+    margin: 15px -6px 0 0;
+}
+.speech .media-heading {
+    font-size: 1.2em;
+    color: #317787;
+    display: block;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    font-weight: 300;
+}
+.speech-time {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: .8em;
+    font-weight: 300;
+}
+.media-block .media-right {
+    float: right;
+    margin-top:0px;
+}
+.speech-right {
+    text-align: right;
+}
+
+.speech-right>.speech {
+    background: #0077ff;
+    color: black;
+    text-align: right;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*.speech>.user-message {
+  float: left;
+}*/
+/*
+.speech>.edit-comment-button {
+  float: left;
+  width: 20px;
+  padding-right: 15px;
+  cursor: pointer;
+}*/
+
+.speech-right>.speech .media-heading {
+    color: #a07617;
+}
+.pagination > li > a{
+    border: 0px;
+    color: black;
+}
+.pagination > .active > a {
+    color: #337ab7;
+    font-weight: bold;
+    border-bottom: 1px solid;
+    background-color: white;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
+{
+     color: #337ab7;
+    font-weight: bold;
+    background-color: white;
+}
+
+.info-icon {
+  width: 16px;
+  height: 21px;
+}
+/**
+ * End comment box style
+ */

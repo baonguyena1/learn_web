@@ -1,0 +1,116 @@
+<div class="project-create">
+
+	<form name="addProject" novalidate>
+	<div class="row top-menu">
+		<div class="col-xs-7 col-sm-7 col-md-8 task-create-title">
+			<h5><strong>Sửa Dự Án</strong></h5>
+		</div>
+		<div class="col-xs-5 col-sm-5 col-md-4">
+			<div class="project-btn-group">
+				<a ui-sref="dashboard.project-infomation({idProject: projectId})" id="link-back" class="btn btn-danger btn-cancel">Hủy</a>
+				<button ng-click="doEdit()" type="button" class="btn btn-primary btn-complete"><i class="fa fa-check" aria-hidden="true"></i> Hoàn Thành</button>
+			</div>
+		</div>
+	</div>
+	<div class="row proj-create-body">
+		<div class="col-xs-12 col-sm-12">
+			<div class="alert alert-danger {{!error ? 'hidden' : ''}}" role="alert">
+				{{mgs_error}}
+			</div>
+
+			<div class="proj-create-body-header">
+				<div class="proj-create-body-ava">
+					<img ng-click="eventClickChooseFile()"
+						id="thumbnail-project" ng-src="{{project.thumbnail}}">
+					<input file-model="photo" type="file" style="display:none" fileread="vm.uploadme" />
+				</div>
+				<div class="project-detail">
+					<p>Tên dự án</p>
+					<input type="text" ng-model="project.name" ng-change="changeProjectName()" name="name" required="" placeholder="Tên dự án">
+				</div>
+			</div>
+			<div class="project-list-icon-container">
+				<ul class="project-list-icon">
+					<li>
+						<img src="" ng-src="./assets/img/icons/icn-location-of-project.png">
+						<input ng-model="project.location"  type="text" name="location" placeholder="Địa chỉ">
+					</li>
+					<li>
+						<img src="" ng-src="./assets/img/icons/icn-companies-of-project.png">
+						<input ng-model="project.investor_unit" type="text" name="investor_unit"
+								placeholder="Chủ đầu tư">
+					</li>
+					<li>
+						<img src="" ng-src="./assets/img/icons/icn-hectares-of-project.png">
+						<input ng-model="project.scale" type="text" name="scale" placeholder="diện tích (m2)">
+					</li>
+					<li>
+						<img src="" ng-src="./assets/img/icons/icn-fund-of-project.png">
+						<input ng-model="project.total_investment" type="text"
+								name="total_investment" placeholder="Số tiền">
+						</li>
+					<li>
+						<img src="" ng-src="./assets/img/icons/icn-group-of-project.png">
+						<input ng-model="project.manager_unit" type="text" name="manager_unit"
+								placeholder="Đơn vị quản lý">
+					</li>
+					<li>
+						<div class="row task-create-add-file">
+							<div class="col-xs-5 col-sm-5 col-md-4">
+								<img ng-src="./assets/img/icons/assignee-icon.png" src="./assets/img/icons/assignee-icon.png">
+								<button class="btn-no-bg" ng-click="openMemberBox('member')">Thành viên</button>
+								<span class="badge badge-notify">{{selected_member.length}}</span>
+							</div>
+							<div class="col-xs-2 col-sm-2 col-md-2">
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="row calendar-input-group-container">
+							<div class="col-xs-4 col-sm-4 col-md-4">
+								<img src="" ng-src="./assets/img/icons/icn-start-date.png">
+								<p class="calendar-input-group input-group">
+									<input type="button"
+									class="form-control calendar-date-picker project-edit-start-date"
+									uib-datepicker-popup="{{format}}"
+									ng-model="project.plan_start_date"
+									is-open="popup1.opened"
+									datepicker-options="dateOptions"
+									show-button-bar="false"
+									alt-input-formats="altInputFormats"
+									showWeeks="false" ng-click="open1()"
+									value="{{project.plan_start_date | formatDate:'Ngày bắt đầu'}}"
+									name="plan_start_date"/>
+								</p>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4">
+								<img src="" ng-src="./assets/img/icons/icn-end-date.png">
+								<p class="calendar-input-group input-group">
+									<input type="button"
+									class="form-control calendar-date-picker project-edit-end-date"
+									uib-datepicker-popup="{{format}}"
+									ng-model="project.plan_end_date"
+									is-open="popup2.opened"
+									datepicker-options="dateOptions"
+									ng-required="true"
+									show-button-bar="false"
+									alt-input-formats="altInputFormats"
+									showWeeks="false"
+									ng-click="open2()"
+									value="{{project.plan_end_date | formatDate:'Ngày kết thúc'}}"
+									name="plan_end_date"/>
+								</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="" ng-src="./assets/img/icons/icn-content.png">
+						<textarea rows="5" ng-model="project.description" name="description" cols="150" placeholder="Mô tả."></textarea>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	</form>
+</div>

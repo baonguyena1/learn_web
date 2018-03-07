@@ -1,0 +1,56 @@
+ <div class="modal-header">
+    <div class="col-xs-4">
+      <h5 class="modal-title create-task-title" id="modal-title">{{$ctrl.modalTitle}}</h5>
+    </div>
+    <div class="col-xs-8">
+      <form class="form-inline pull-right">
+        <div class="form-group">
+          <input type="text" ng-model="$ctrl.keyword" class="form-control" name="" placeholder="Nhập tên">
+        </div>
+        <input ng-click="$ctrl.doSearch()" type="submit" class="btn" value="Tìm kiếm">
+      </form>
+    </div>
+</div>
+<div class="modal-body modal-select-user" id="modal-body">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list-user-system">
+  <div ng-repeat="member in $ctrl.members"
+        ng-click="$ctrl.selectUser(member)">
+      <div
+           class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wrap-infor-assigner ">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <img check-avatar-image class="avatar-assign" ng-src="{{member.avatar}}">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 user-assign">
+          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <h5><strong>{{member.last_name}} {{member.middle_name}} {{member.first_name}}</strong></h5>
+              <h6>{{member.position.name}}</h6>
+          </div>
+           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <div ng-if="member.is_selected" class="circle-prior-normal"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="col-xs-12 ">
+  <ul uib-pagination
+    total-items="$ctrl.totalItems"
+    max-size="10"
+    items-per-page="$ctrl.perPage"
+    ng-model="$ctrl.currentPage"
+    ng-change="$ctrl.pageChanged()"
+    previous-text="Trang trước"
+    next-text="Trang sau"
+    class="pull-right">
+  </ul>
+   <!-- <ul class="pull-right" uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.perPage"
+   ng-model="$ctrl.currentPage" max-size="5" class="pagination-sm" boundary-links="true" force-ellipses="true"
+   ng-change="$ctrl.pageChanged()" first-text="Trang đầu" last-text="Trang cuối" next-text="Trang sau" previous-text="Trang trước">
+   </ul> -->
+</div>
+
+</div>
+<div class="modal-footer modal-select-asignee add-document-popup-container">
+    <button  class="btn btn-danger btn-cancel ng-scope" ng-click="$ctrl.cancel()">Hủy</button>
+    <button class="btn btn-primary btn-doc-save" type="button" ng-click="$ctrl.ok()"> Xong </button>
+</div>

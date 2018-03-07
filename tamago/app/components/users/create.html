@@ -1,0 +1,67 @@
+<div class="row userController">
+    <div class="col-lg-12">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control" placeholder="Ví dụ: hainq@sungroup.com" value="" ng-model="user.email" required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Họ</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Ví dụ: Nguyễn" value="" ng-model="user.lastname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Tên đệm</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Ví dụ: Quang" value="" ng-model="user.middlename">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Tên</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Ví dụ: Hải" value="" ng-model="user.lastname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Địa chỉ</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Ví dụ: 254 Nguyễn Văn Linh, Đà Nẵng" value="" ng-model="user.address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Điện thoại</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Ví dụ: 0935 886 685" value="" ng-model="user.phone">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary submit-button" ng-click="createUser(user)">Tạo tài khoản</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

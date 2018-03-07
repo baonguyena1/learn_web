@@ -1,0 +1,132 @@
+.project-information-container .top-menu {
+    height: auto;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1%;
+    padding-bottom: 3px;
+}
+.project-information-container .btn-add-document {
+    margin-right: auto;
+}
+
+.add-document-popup-container .btn-doc-cancel{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #fc2850;
+    font-weight: 700;
+}
+.add-document-popup-container .btn-doc-save{
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    background-color: #1783ff;
+    color: #fff;
+    font-weight: 700;
+}
+.add-document-popup-container button:focus,
+.add-document-popup-container button:active:focus {
+    outline: none!important;
+}
+.add-document-popup-container div label {
+    padding-left: 10px;
+}
+.add-document-popup-container div .modal-title {
+    color: #2374f7;
+}
+.add-document-popup-container .modal-header {
+    padding: 10px 15px;
+}
+.add-document-popup-container input {
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0px;
+    border-left: none;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+
+.add-document-popup-container input:focus {
+    outline: none;
+    border-bottom: 2px solid #979797;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+.add-document-popup-container textarea {
+    border: none;
+    resize: none;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+.add-document-popup-container textarea:focus {
+    outline: none;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
+
+.project-info-col-md {
+    width: 20%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+}
+.children-tasks .project-detail-label {
+    margin-left: 15px;
+    padding-right: 0px!important;
+    margin-top: -6px;
+}
+.children-tasks .project-detail-label img {
+    float: left;
+    margin-right: 10px;
+}
+.children-tasks .project-detail-label h5 {
+    padding-top: 5px;
+}
+.project-information-container .proj-info-complete {
+    float: left;
+    width: 33%;
+}
+.project-information-container .proj-info-task-delay {
+    float: left;
+    width: 33%;
+}
+.project-information-container .proj-info-num-worker {
+    float: left;
+    width: 18%;
+}
+.project-information-container .proj-info-create-task {
+    float: right;
+    margin-right: 10px;
+}
+.proj-info-element-container {
+    margin: auto;
+    width: 390px;
+    padding-top: 10px;
+}
+.project-detail-info-list img{
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.project-detail-info-list-date {
+    width: 30%;
+    float: left;
+}
+.project-detail-info-list-description {
+    margin-left: 60px;
+}
+.project-detail-img {
+    float: left;
+    margin-top: 10px;
+    margin-left: 15px;
+    width: 35px;
+    height: 35px;
+}
+/*.description-project{
+    height: 100px;
+    overflow-y: scroll;
+}*/

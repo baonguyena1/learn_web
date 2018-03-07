@@ -1,0 +1,34 @@
+<form name="addDocumentForm" class="add-document-popup-container">
+        <div class="modal-header">
+        <h4 class="modal-title" id="modal-title"><strong>VĂN BẢN</strong></h4>
+        </div>
+        <div class="modal-body disabled-document-frm" id="modal-body">
+                <div class="form-group">
+                    <label>Số liệu văn bản: </label>
+                    <input disabled ng-model="$ctrl.document_number" required="" class="form-control" placeholder="Số liệu văn bản" name="">
+                </div>
+                <div class="form-group">
+                    <label>Cơ quan hành chính: </label>
+                    <input disabled ng-model="$ctrl.issuer" required="" class="form-control" placeholder="Cơ quan hành chính" name="">
+                </div>
+                <div class="form-group">
+                    <label>Mô tả: </label>
+                    <textarea disabled ng-model="$ctrl.description" required="" class="form-control no-margin" placeholder="Mô tả"></textarea>
+                </div>
+                <div class="form-group publish-day">
+                    <label>Ngày ban hành: </label>
+                      <input disabled ng-model="$ctrl.publish_date | formatDate" required="" class="form-control"
+                      placeholder="Ngày ban hành" name="">
+                </div>
+                <div class="form-group" ng-repeat="type in $ctrl.types">
+                    <label>
+                        <input disabled type="radio" value="{{type.value}}"
+                        ng-model="$ctrl.type" name="type"> {{type.name}}
+                    </label>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger btn-doc-cancel" type="button" ng-click="$ctrl.cancel()">Đóng</button>
+        </div>
+    </form>

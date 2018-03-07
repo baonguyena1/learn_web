@@ -1,0 +1,60 @@
+<div class="panel panel-default task-list-panel task-detail-panel">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 task-img-manager">
+            <img check-avatar-image class="img-manager-task" ng-src="{{children.assigner.avatar}}"
+            title="{{children.assigner | displayUserName}}"/>
+        </div>
+        <div class="col-xs-8 col-sm-8">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12"><small>Đã giao cách đây {{children.assign_date}}</small></div>
+            <div class="col-xs-12 col-sm-12">
+            <h6 class="project-info">
+                <img class="task-icon-project"
+                ng-src="./assets/img/icons/icn-project-name.png"/>
+                {{children.project.name | filterTaskProjectName}}
+            </h6>
+            </div>
+        </div>
+        <div class="row"></div>
+
+        </div>
+        <div class="col-xs-2 col-sm-2 wrap-circle">
+            <div class="{{children.priority}}"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <strong class="wrap-task-detail">
+                <a ui-sref="dashboard.task-detail({idTask: children._id })">
+                {{children.title | filterTaskName}}
+                </a>
+            </strong>
+        </div>
+    </div>
+    <div class="row task-list-panel-info">
+        <div class="col-xs-4 col-sm-4">
+            <div class="col-xs-12 task-list-info-detail">
+                <div class="task-icon">
+                    <img ng-src={{children|taskStatusIcon}} class="info-icon">
+                    <h6>{{children.plan_end_date | taskStatus : children.status}}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+            <div class="col-xs-12 task-list-info-detail">
+                <div class="task-icon">
+                    <img ng-src="./assets/img/icons/icn-tac-vu.png"/>
+                    <h6><strong>{{children.children_task}} Tác vụ</strong></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+            <div class="col-xs-12 task-list-info-detail">
+                <div class="task-icon">
+                    <img ng-src="./assets/img/icons/icn-comment.png"/>
+                    <h6><strong>{{children.comments}} Bình luận</strong></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

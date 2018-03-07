@@ -1,0 +1,125 @@
+.task-list-icon-container>div {
+	padding: 15px;
+}
+.task-list-icon-container .row {
+	margin: 0px;
+	padding-left: 0px;
+}
+.task-list-icon-container div img {
+	float: left;
+}
+.task-list-icon-container div input,textarea {
+	margin-left: 30px;
+}
+.task-list-icon-container input {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid transparent;
+	border-left: none;
+	width: 90%;
+}
+
+.task-list-icon-container input:focus {
+	outline: none;
+	border-bottom: 1px solid #D8D8D7;
+}
+.task-list-icon-container div textarea {
+    margin-left: 28px;
+    width: 90%;
+    border: none;
+    resize: none;
+}
+.task-list-icon-container div textarea:focus {
+	outline:none;
+}
+.task-list-icon-container .task-create-add-file button {
+	margin-left: 30px;
+	padding-left: 0px;
+	border: none;
+	background: none;
+}
+.task-create-add-file-calendar{
+	padding-bottom: 0px !important;
+}
+
+.task-priority {
+	padding-left: 15px;
+}
+.task-priority .dropdown-menu{
+	line-height: 30px;
+}
+.task-priority div img{
+	margin-right: 26px;
+}
+.modal-select-asignee{
+	border-top: none;
+}
+.document input {
+	width: 100%;
+	border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    border-left: none;
+    line-height: 20px;
+}
+.create-task-title{
+	color:#2374f7;
+	font-weight: bold;
+	line-height: 2.4;
+}
+.task-list-icon-container .task-create-num-attached {
+    float: left;
+}
+.task-list-icon-container .task-create-num-attached span{
+    background-color: red;
+}
+.txt-change-reason{
+	width: 100%;
+	height: 150px;
+	margin-left: 0px;
+	padding: 0px;
+	border-color: white;
+	border: none;
+	box-shadow: none;
+	resize: none;
+}
+.txt-change-reason:focus{
+	box-shadow: none;
+	border-color: white;
+	outline: none;
+}
+.comment-box .btn-cancel{
+	background: #fc2850;
+	font-weight: bold;
+	color: white;
+}
+.comment-box .btn-send{
+	background: #1783ff;
+	font-weight: bold;
+	color: white;
+}
+.task-required {
+    top: -2px;
+    left: 66px;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+    z-index: 100;
+}
+.icon-govement{
+	width: 20px;
+	height: 20px;
+}
+.list-task-template{
+	height: 300px;
+	overflow-y: scroll;
+}
+.children-task{
+	color: #2374f7;
+    border-bottom: 1px solid #ccc;
+}
+.circle-task-template{
+	margin-top: 10px;
+}

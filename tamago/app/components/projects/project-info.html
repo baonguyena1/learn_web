@@ -1,0 +1,30 @@
+<div class="panel panel-default project-info-task-list-panel">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<a ng-href="#/dashboard/projects/{{project._id}}/thongtin">
+				<h5 class="project-info-name-label">
+				<!-- {{project.name | filterProjectName}} -->
+        {{project.name}}
+				</h5>
+			</a>
+		</div>
+	</div>
+	<div class="row project-info-detail">
+		<div class="col-xs-3 col-sm-3 ">
+			<img check-avatar-image class="img-project-creator" ng-src="{{project.owner.avatar}}"
+			 title="{{project.owner | displayUserName}}">
+		</div>
+		<div class="col-xs-3 col-sm-3 text-center cursor-pointer" ng-click="openBox(6, project._id)">
+			<h4 class="project-info-detail-num">{{project.late_task_count}}</h4>
+			<h5 class="project-info-detail-label">Trễ việc</h5>
+		</div>
+		<div class="col-xs-3 col-sm-3 text-center cursor-pointer" ng-click="openBox(2, project._id)">
+			<h4 class="project-info-detail-num">{{project.done_task_count}}</h4>
+			<h5 class="project-info-detail-label">Hoàn thành</h5>
+		</div>
+		<div class="col-xs-3 col-sm-3 text-center cursor-pointer" ng-click="openBox(0, project._id)">
+			<h4 class="project-info-detail-num">{{project.new_task_count}}</h4>
+			<h5 class="project-info-detail-label">Tác vụ mới</h5>
+		</div>
+	</div>
+</div>

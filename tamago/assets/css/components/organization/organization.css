@@ -1,0 +1,41 @@
+.organization-name {
+    margin-left: 15px;
+}
+
+.organization-address {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.organization {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #e2dddd;
+}
+
+.button-update-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.box-organization {
+    margin-top: 20px;
+}
+
+#remove-org-button {
+    background-color: transparent !important;
+    color: #fc2850;
+    border-color: #fc2850;
+}
+
+.create-org-button {
+    float: right;
+    margin-right: 22px;
+    padding: 5px;
+    color: #00a8ec
+}
+
+.create-org-button span {
+    color: #00a8ec;
+}

@@ -1,0 +1,14 @@
+<li ng-repeat="h in histories">
+  <div style="margin-bottom: 5px;">
+    <div class="history-number-fromto">
+      <p class="p-number-week-cell">Tuần {{h.weekNumber}}</p>
+      <p class="p-fromto-week-cell">Từ {{h.fromDate}} đến {{h.toDate}}</p>
+    </div>
+    <div class="history-download-report">
+      <p class="p-time-ago">cách đây {{h.timeAgo | formatTime}}</p>
+      <a href="{{h.link}}">
+        <img class="img-download-load-report" ng-src="./assets/img/icons/button-download.png">
+      </a>
+    </div>
+  </div>
+</li>

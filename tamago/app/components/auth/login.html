@@ -1,0 +1,82 @@
+
+<div class="login-page">
+	<div class="row header-login-entry">
+	    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	        <div class="navbar-header page-scroll">
+	            <a class="navbar-brand not-active" href="#">
+	                <img class="img-logo" ng-src="./assets/img/icons/logo-sungroup.png">
+	            </a>
+	        </div>
+	    </div>
+	    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	        <div class="row btn-download-group pull-right">
+	            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+	                <button type="button" class="btn btn-default btn-sm btn-download" style="with: 100%;">
+	                    <strong translate >DOWNLOAD_APP_APPLE</strong>
+	                </button>
+	            </div>
+
+	            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+	                <button type="button" class="btn btn-default btn-sm btn-download" style="with: 100%;">
+	                    <strong translate >DOWNLOAD_APP_ANDROID</strong>
+	                </button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-sm-4"></div>
+		<div class="col-xs-4 col-sm-4 text-center">
+			<h2 class="text-sologan"></h2>
+			<h5 class="text-short-content"></h5>
+		</div>
+		<div class="col-xs-4 col-sm-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-sm-4"></div>
+		<div class="col-xs-4 col-sm-4">
+			<div class="panel panel-default login-panel">
+				<form  novalidate method="POST" role="form" name="loginForm"
+				 ng-controller="loginController" ng-submit="login()">
+					<div class="wrap-login">
+						<h3 class="text-center"><strong>Đăng nhập</strong></h3>
+
+						<div class="form-group frm-group-username">
+						 <label for="usr">Tên đăng nhập </label>
+						 <div class="inner-addon right-addon">
+							 <i class="fa fa-user" aria-hidden="true"></i>
+							 <input type="text" class="form-control txt-username" placeholder="Tên đăng nhập" name="username"
+							 ng-model="username" ng-keypress="usernameEvent()" >
+
+						</div>
+						</div>
+						<div class="form-group">
+						  <label for="pwd">Mật khẩu </label>
+						  <div class="inner-addon right-addon">
+							  <i class="fa fa-lock" aria-hidden="true"></i>
+							  <input type="password" class="form-control txt-password" placeholder="Mật khẩu" name="password"
+							  ng-model="password" ng-keypress="passwordEvent()">
+						  </div>
+						</div>
+						<div ng-if="error" class="alert alert-danger" role="alert">
+							<strong>{{mgs_error}}!</strong>
+						</div>
+						<div class="{{alertDanger}}">
+							    <strong>{{disconnectServer}}</strong>
+						</div>
+						<span class="msg-error">{{result}}</span>
+						<div class="row">
+						</div>
+						<div class="row footer-login">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			           		      <button type="submit" ng-disabled="processing" class="btn btn-default btn-login">Đăng nhập</button>
+			           		</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-xs-4 col-sm-4"></div>
+	</div>
+	</div>
+</div>
